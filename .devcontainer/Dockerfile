@@ -33,7 +33,7 @@ RUN git clone https://github.com/flutter/flutter.git
 ENV PATH "$PATH:/home/vscode/flutter/bin"
 
 # Install Chrome for Web Development
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install ./google-chrome-stable_current_amd64.deb
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 # Run basic check to download Dark SDK
 RUN flutter doctor
