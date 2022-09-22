@@ -2,7 +2,7 @@
 	"name": "flutter_docker",
 	"context": "..",
 	"dockerFile": "Dockerfile",
-	"remoteUser": "developer",
+	"remoteUser": "vscode",
 	"mounts": [
 		"source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
 	],
@@ -12,8 +12,8 @@
 	"extensions": [
 		"dart-code.flutter"
 	],
-	"workspaceMount": "source=${localWorkspaceFolder},target=/home/developer/workspace,type=bind,consistency=delegated",
-	"workspaceFolder": "/home/developer/workspace",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind,consistency=delegated",
+	"workspaceFolder": "/home/vscode/workspace",
 	"features": {
 		"git": "latest",
 		"github-cli": "latest"
