@@ -13,11 +13,11 @@ RUN apt-get install software-properties-common -y && apt-add-repository ppa:git-
 RUN apt-get install software-properties-common -y && apt-add-repository ppa:maarten-fonville/android-studio && apt-get update && apt-get install android-studio -y
 
 USER vscode
-WORKDIR /home/vscode
+WORKDIR /home/$USER
 
 # Prepare Android directories and system variables
 RUN mkdir -p Android/sdk
-ENV ANDROID_SDK_ROOT /home/vscode/Android/sdk
+ENV ANDROID_SDK_ROOT /home/$USER/Android/sdk
 RUN mkdir -p .android && touch .android/repositories.cfg
 
 # Set up Android SDK
@@ -26,11 +26,11 @@ RUN unzip sdk-tools.zip && rm sdk-tools.zip
 RUN mv tools Android/sdk/tools
 RUN cd Android/sdk/tools/bin && yes | ./sdkmanager --licenses
 RUN cd Android/sdk/tools/bin && ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
-ENV PATH "$PATH:/home/vscode/Android/sdk/platform-tools"
+ENV PATH "$PATH:/home/$USER/Android/sdk/platform-tools"
 
 # Download Flutter SDK
 RUN git clone https://github.com/flutter/flutter.git
-ENV PATH "$PATH:/home/vscode/flutter/bin"
+ENV PATH "$PATH:/home/$USER/flutter/bin"
 
 # Install Chrome for Web Development
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
