@@ -28,7 +28,10 @@ RUN unzip sdk-tools.zip && rm sdk-tools.zip
 RUN mv tools Android/sdk/tools
 RUN cd Android/sdk/tools/bin && yes | ./sdkmanager --licenses
 RUN cd Android/sdk/tools/bin && ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
+ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
+ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
+ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
 
 # Download Flutter SDK
 RUN git clone https://github.com/flutter/flutter.git
