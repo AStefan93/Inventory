@@ -1,5 +1,3 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/ubuntu/.devcontainer/base.Dockerfile
-
 FROM gitpod/workspace-full-vnc
 
 # Prerequisites
@@ -25,8 +23,8 @@ RUN sudo mkdir -p .android && sudo touch .android/repositories.cfg
 RUN sudo wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 RUN sudo unzip sdk-tools.zip && sudo rm sdk-tools.zip
 RUN sudo mv tools Android/sdk/tools
-RUN cd Android/sdk/tools/bin && yes | ./sdkmanager --licenses
-RUN cd Android/sdk/tools/bin && ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
+RUN sudo cd Android/sdk/tools/bin && sudo yes | ./sdkmanager --licenses
+RUN sudo cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
@@ -37,8 +35,8 @@ RUN git clone https://github.com/flutter/flutter.git
 ENV PATH "$PATH:/home/$USERNAME/flutter/bin"
 
 # Install Chrome for Web Development
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-RUN rm google-chrome-stable_current_amd64.deb
+RUN sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+RUN sudo rm google-chrome-stable_current_amd64.deb
 
 # Run basic check to download Dark SDK
 RUN flutter doctor
