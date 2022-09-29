@@ -3,28 +3,28 @@
 FROM gitpod/workspace-full-vnc
 
 # Prerequisites
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+RUN sudo apt-get update && sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
 
 # Install latest git version
-RUN apt-get install software-properties-common -y && apt-add-repository ppa:git-core/ppa && apt-get update && apt-get install git -y
+RUN sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:git-core/ppa && sudo apt-get update && sudo apt-get install git -y
 
 # Install Android Studio
-RUN apt-get install software-properties-common -y && apt-add-repository ppa:maarten-fonville/android-studio && apt-get update && apt-get install android-studio -y
+RUN sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:maarten-fonville/android-studio && sudo apt-get update && sudo apt-get install android-studio -y
 
-ARG USERNAME=vscode
+ARG USERNAME=gitpod
 USER $USERNAME
 WORKDIR /home/$USERNAME
-ENV DISPLAY=:0
+# ENV DISPLAY=:0
 
 # Prepare Android directories and system variables
-RUN mkdir -p Android/sdk
+RUN sudo mkdir -p Android/sdk
 ENV ANDROID_SDK_ROOT /home/$USERNAME/Android/sdk
-RUN mkdir -p .android && touch .android/repositories.cfg
+RUN sudo mkdir -p .android && sudo touch .android/repositories.cfg
 
 # Set up Android SDK
-RUN wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
-RUN unzip sdk-tools.zip && rm sdk-tools.zip
-RUN mv tools Android/sdk/tools
+RUN sudo wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+RUN sudo unzip sdk-tools.zip && sudo rm sdk-tools.zip
+RUN sudo mv tools Android/sdk/tools
 RUN cd Android/sdk/tools/bin && yes | ./sdkmanager --licenses
 RUN cd Android/sdk/tools/bin && ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
