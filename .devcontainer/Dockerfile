@@ -23,8 +23,8 @@ RUN sudo mkdir -p .android && sudo touch .android/repositories.cfg
 RUN sudo wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 RUN sudo unzip sdk-tools.zip && sudo rm sdk-tools.zip
 RUN sudo mv tools Android/sdk/tools
-RUN sudo cd Android/sdk/tools/bin && sudo yes | ./sdkmanager --licenses
-RUN sudo cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
+RUN cd Android/sdk/tools/bin && yes | sudo ./sdkmanager --licenses
+RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
