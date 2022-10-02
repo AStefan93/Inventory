@@ -37,5 +37,5 @@ ENV PATH "$PATH:/home/$USERNAME/flutter/bin"
 RUN sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 RUN sudo rm google-chrome-stable_current_amd64.deb
 
-# Run basic check to download Dark SDK
+# Run basic check to download Dart SDK
 RUN flutter doctor

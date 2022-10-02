@@ -1,4 +1,4 @@
-image: astefan93/cpp:latest
+image: astefan93/inventory:latest
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
