@@ -27,7 +27,7 @@ RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
-ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
+ENV PATH "$PATH:/home/$USERNAME/Android/sdk/tools"
 
 # Download Flutter SDK
 RUN git clone https://github.com/flutter/flutter.git

@@ -12,15 +12,35 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  BuildImage:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
+        with:
+          fetch-depth: 2
+      - name: Get changed files in the docs folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v29.0.9
+        with:
+          files: .devcontainer/Dockerfile
+      - name: Docker Login
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Build docker image
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: docker build -t local -f .devcontainer/Dockerfile .
+      - name: Tag docker image
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: docker image tag local astefan93/inventory:latest
+      - name: Push docker image
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: docker push astefan93/inventory:latest
+
+  RunTests:
+    needs: BuildImage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
       - name: Run container
-        run: docker run --name localContainer -idt --volume $PWD:/srv local
+        run: docker run --name localContainer -idt --volume $PWD:/srv astefan93/inventory:latest
       - name: Run tests
-        run: docker exec -w/srv localContainer (cd app && exec flutter test)
+        run: docker exec -w/srv localContainer cd app && flutter test
