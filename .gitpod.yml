@@ -1,5 +1,4 @@
-image:
-  file: .devcontainer/Dockerfile
+image: astefan93/cpp:latest
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
