@@ -43,4 +43,4 @@ jobs:
       - name: Run container
         run: docker run --name localContainer -idt --volume $PWD:/srv astefan93/inventory:latest
       - name: Run tests
-        run: docker exec -w/srv/app localContainer sudo flutter test
+        run: docker exec -w/srv/app localContainer ~/Android/sdk/tools/bin/flutter test
