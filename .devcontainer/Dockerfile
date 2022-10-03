@@ -23,11 +23,11 @@ RUN sudo wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tool
 RUN sudo unzip sdk-tools.zip && sudo rm sdk-tools.zip
 RUN sudo mv tools Android/sdk/tools
 RUN cd Android/sdk/tools/bin && yes | sudo ./sdkmanager --licenses
-RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-29" "sources;android-29"
+RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;33.0.0" "patcher;v4" "platform-tools" "platforms;android-33" "sources;android-33"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
-ENV PATH "$PATH:/home/$USERNAME/Android/sdk/tools"
+ENV PATH "$PATH:/home/$USERNAME/Android/sdk/emulator"
 RUN sudo chown -R $USERNAME /home/$USERNAME/Android \
     && sudo chown -R $USERNAME /home/$USERNAME/.android
 
