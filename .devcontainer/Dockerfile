@@ -28,6 +28,8 @@ ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/tools"
+RUN sudo chown -R $USERNAME /home/$USERNAME/Android \
+    && sudo chown -R $USERNAME /home/$USERNAME/.android
 
 # Download Flutter SDK
 RUN git clone https://github.com/flutter/flutter.git
