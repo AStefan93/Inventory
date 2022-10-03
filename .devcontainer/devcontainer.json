@@ -1,7 +1,6 @@
 {
 	"name": "flutter_docker",
 	"image": "astefan93/inventory:latest",
-	// "remoteUser": "gitpod",
 	"mounts": [
 		"source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
 	],
@@ -18,6 +17,6 @@
 		"redhat.vscode-xml",
 		"redhat.vscode-yaml"
 	],
-	"workspaceMount": "source=${localWorkspaceFolder},target=/home/gitpod/workspace,type=bind,consistency=delegated",
-	"workspaceFolder": "/home/gitpod/workspace"
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/Inventory,type=bind,consistency=delegated",
+	"workspaceFolder": "/workspace/Inventory"
 }
