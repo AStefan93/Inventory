@@ -23,7 +23,7 @@ RUN sudo wget -O sdk-tools.zip https://dl.google.com/android/repository/sdk-tool
 RUN sudo unzip sdk-tools.zip && sudo rm sdk-tools.zip
 RUN sudo mv tools Android/sdk/tools
 RUN cd Android/sdk/tools/bin && yes | sudo ./sdkmanager --licenses
-RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;33.0.0" "patcher;v4" "platform-tools" "platforms;android-33" "sources;android-33"
+RUN cd Android/sdk/tools/bin && sudo ./sdkmanager "cmdline-tools;latest" "build-tools;33.0.0" "patcher;v4" "platform-tools" "platforms;android-33" "sources;android-33" "emulator"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/$USERNAME/Android/sdk/cmdline-tools/latest/bin"
