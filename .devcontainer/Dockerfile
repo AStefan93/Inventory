@@ -39,6 +39,7 @@ ENV PATH "$PATH:/home/$USERNAME/flutter/bin"
 # Install Chrome for Web Development
 RUN sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 RUN sudo rm google-chrome-stable_current_amd64.deb
+RUN sudo apt-get autoremove -y && sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/*
 
 # Run basic check to download Dart SDK
 RUN flutter doctor
