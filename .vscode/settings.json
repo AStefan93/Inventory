@@ -7,6 +7,8 @@
     "workbench.startupEditor": "none",
     "gitlens.showWhatsNewAfterUpgrades": false,
     "gitlens.showWelcomeOnInstall": false,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true,
     "[dart]": {
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
@@ -20,4 +22,7 @@
         "editor.wordBasedSuggestions": false
     },
     "dart.openDevTools": "flutter",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
 }

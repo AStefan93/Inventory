@@ -1,13 +1,13 @@
 FROM gitpod/workspace-full-vnc
 
 # Prerequisites
-RUN sudo apt-get update && sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
-
-# Install latest git version
-RUN sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:git-core/ppa && sudo apt-get update && sudo apt-get install git -y
-
-# Install Android Studio
-RUN sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:maarten-fonville/android-studio && sudo apt-get update && sudo apt-get install android-studio -y
+RUN sudo apt-get update && sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev clang-format \
+    #
+    # Install latest git version
+    && sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:git-core/ppa && sudo apt-get update && sudo apt-get install git -y \
+    #
+    # Install Android Studio
+    && sudo apt-get install software-properties-common -y && sudo apt-add-repository ppa:maarten-fonville/android-studio && sudo apt-get update && sudo apt-get install android-studio -y
 
 ARG USERNAME=gitpod
 USER $USERNAME
@@ -37,9 +37,9 @@ RUN git clone https://github.com/flutter/flutter.git
 ENV PATH "$PATH:/home/$USERNAME/flutter/bin"
 
 # Install Chrome for Web Development
-RUN sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-RUN sudo rm google-chrome-stable_current_amd64.deb
-RUN sudo apt-get autoremove -y && sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/*
+RUN sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && sudo rm google-chrome-stable_current_amd64.deb \
+    && sudo apt-get autoremove -y && sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/*
 
 # Run basic check to download Dart SDK
 RUN flutter doctor
