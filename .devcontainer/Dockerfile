@@ -12,6 +12,7 @@ RUN sudo apt-get install software-properties-common -y && sudo apt-add-repositor
 ARG USERNAME=gitpod
 USER $USERNAME
 WORKDIR /home/$USERNAME
+ENV DISPLAY=:0
 
 # Prepare Android directories and system variables
 RUN sudo mkdir -p Android/sdk
