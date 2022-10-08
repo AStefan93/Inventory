@@ -2,7 +2,8 @@
 	"name": "flutter_docker",
 	"image": "astefan93/inventory:latest",
 	"mounts": [
-		"source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
+		"source=/dev/bus/usb,target=/dev/bus/usb,type=bind",
+		"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
 	],
 	"runArgs": [
 		"--privileged"
@@ -18,5 +19,5 @@
 		"redhat.vscode-yaml"
 	],
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/Inventory,type=bind,consistency=delegated",
-	"workspaceFolder": "/workspace/Inventory"
+	"workspaceFolder": "/workspace/Inventory/"
 }
