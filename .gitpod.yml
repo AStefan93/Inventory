@@ -1,4 +1,6 @@
 image: astefan93/inventory:latest
+tasks:
+    - init: (cd app && flutter pub get)
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
