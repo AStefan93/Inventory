@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 2
       - name: Get changed files in the docs folder
         id: changed-files-specific
-        uses: tj-actions/changed-files@v45.0.2
+        uses: tj-actions/changed-files@v45.0.3
         with:
           files: .devcontainer/Dockerfile
       - name: Docker Login
